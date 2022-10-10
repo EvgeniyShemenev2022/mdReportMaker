@@ -1,6 +1,7 @@
 package org.shemenev.v2;
 
 import java.time.LocalTime;
+import java.util.Objects;
 
 /**
  * Одна строа таблицы из отчета программиста
@@ -44,17 +45,20 @@ public class Record extends Object {
     }
 
 
-
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Record record = (Record) o;
+        return getLineNumber().equals(record.getLineNumber())
+                && getTime().equals(record.getTime())
+                && getTaskName().equals(record.getTaskName())
+                && getDescription().equals(record.getDescription());
+    }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        Record otherRecord = (Record) obj;
-        return lineNumber.equals(otherRecord.getLineNumber()) &&
-                time.equals(otherRecord.getTime()) &&
-                taskName.equals(otherRecord.getTaskName()) &&
-               description.equals(otherRecord.getDescription());
+    public int hashCode() {
+        return Objects.hash(getLineNumber(), getTime(), getTaskName(), getDescription());
     }
 
     @Override
@@ -68,8 +72,15 @@ public class Record extends Object {
     }
 }
 
-//
-//this.lineNumber == otherRecord.lineNumber &&
-//        this.time == otherRecord.time &&
-//        this.taskName == otherRecord.taskName &&
-//        this.description == otherRecord.description)
+/*
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        Record otherRecord = (Record) obj;
+        return lineNumber.equals(otherRecord.getLineNumber()) &&
+                time.equals(otherRecord.getTime()) &&
+                taskName.equals(otherRecord.getTaskName()) &&
+                description.equals(otherRecord.getDescription());
+    }*/
+
+

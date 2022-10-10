@@ -27,18 +27,18 @@ public class ParserTest {
     }
 
     @Test(expected = IllegalStateException.class)
-    public void should_throw_exception_if_there_is_no_such_file(){
+    public void should_throw_exception_if_there_is_no_such_file() {
         Parser parser = new Parser();
         Path path = Paths.get("C:\\путь\\файл.md");
         List<Record> records = parser.parse(path);
     }
 
     @Test
-    public void should_throw_exception_if_there_is_no_such_file_v2(){
+    public void should_throw_exception_if_there_is_no_such_file_v2() {
         Parser parser = new Parser();
         boolean wasThrown = false;
         Path path = Paths.get("C:\\путь\\файл.md");
-        try{
+        try {
             List<Record> records = parser.parse(path);
         } catch (IllegalStateException exception) {
             wasThrown = true;
@@ -56,7 +56,7 @@ public class ParserTest {
      * @throws URISyntaxException
      */
     @Test
-    public void should_read_expected_records() throws URISyntaxException{
+    public void should_read_expected_records() throws URISyntaxException {
         Parser parser = new Parser();
         URL url = Parser.class.getResource("shortDataSample.md");
         Path path = Paths.get(url.toURI());
@@ -64,11 +64,24 @@ public class ParserTest {
 
         List<Record> expectedRecords = List.of(
                 new Record(1, LocalTime.of(10, 5, 0), "inbox", "начало"),
-                new Record(2, LocalTime.of(10, 48,0), "break", "empty"),
+                new Record(2, LocalTime.of(10, 48, 0), "break", "empty"),
                 new Record(3, LocalTime.of(19, 20, 0), "ID-1872", "делаю задачу"),
                 new Record(4, LocalTime.of(20, 1, 0), "end", "empty")
         );
 
         Assert.assertEquals(expectedRecords, parsedRecords);
+    }
+
+    @Test
+    public void should_compare_objects() {
+        Record record1 = new Record(1, LocalTime.of(10, 55, 0), "check", "empty");
+        Record record2 = new Record(1, LocalTime.of(10, 55, 0), "check", "empty");
+        boolean expectedCompare = true;
+        boolean compare = record1.equals(record2)
+                && record2.equals(record1);
+
+        Assert.assertSame(expectedCompare, compare);
+
+
     }
 }
