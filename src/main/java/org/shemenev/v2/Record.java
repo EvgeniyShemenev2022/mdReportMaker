@@ -48,7 +48,7 @@ public class Record extends Object {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Record)) return false;
         Record record = (Record) o;
         return getLineNumber().equals(record.getLineNumber())
                 && getTime().equals(record.getTime())
