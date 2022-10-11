@@ -4,7 +4,7 @@ import java.time.LocalTime;
 import java.util.Objects;
 
 /**
- * Одна строа таблицы из отчета программиста
+ * Одна строка таблицы из отчета программиста
  * <p>
  * Строка должна иметь вид
  * | 7   | 14:17 | review     | [M] ID-1839 Рефакторинг парсинга на SAX  |
@@ -71,16 +71,4 @@ public class Record extends Object {
                 '}';
     }
 }
-
-/*
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        Record otherRecord = (Record) obj;
-        return lineNumber.equals(otherRecord.getLineNumber()) &&
-                time.equals(otherRecord.getTime()) &&
-                taskName.equals(otherRecord.getTaskName()) &&
-                description.equals(otherRecord.getDescription());
-    }*/
-
 
