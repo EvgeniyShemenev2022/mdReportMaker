@@ -1,5 +1,6 @@
 package org.shemenev.v2;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -42,12 +43,13 @@ public class Parser {
                     .filter(line -> !line.contains("| №   |"))
                     .map(this::recordMapper)
                     .collect(Collectors.toList());
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             throw new IllegalStateException("Не удалось считать файл: " + pathToFile, e);
         }
     }
 
-    private Record recordMapper(String line){
+    private Record recordMapper(String line) {
 
         List<String> columns = Arrays.stream(line.split("\\|"))
                 .map(column -> column.strip())
@@ -59,7 +61,7 @@ public class Parser {
         String taskName = columns.get(2);
         String description = columns.size() == 4 ? columns.get(3) : "empty";
 
-        return new Record(lineNumber,time, taskName, description);
+        return new Record(lineNumber, time, taskName, description);
     }
 }
 
