@@ -3,7 +3,6 @@ package org.shemenev.v2;
 
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -68,7 +67,6 @@ public class ParserTest {
                 new Record(3, LocalTime.of(19, 20, 0), "ID-1872", "делаю задачу"),
                 new Record(4, LocalTime.of(20, 1, 0), "end", "empty")
         );
-
         Assert.assertEquals(expectedRecords, parsedRecords);
     }
 
@@ -76,12 +74,15 @@ public class ParserTest {
     public void should_compare_objects() {
         Record record1 = new Record(1, LocalTime.of(10, 55, 0), "check", "empty");
         Record record2 = new Record(1, LocalTime.of(10, 55, 0), "check", "empty");
-        boolean expectedCompare = true;
-        boolean compare = record1.equals(record2)
-                && record2.equals(record1);
-
-        Assert.assertSame(expectedCompare, compare);
+        Assert.assertTrue(record1.equals(record2) && record2.equals(record1));
+        Assert.assertEquals(record1.hashCode(), record2.hashCode());
 
 
+    }@Test
+    public void should_compare_different_objects() {
+        Record record1 = new Record(1, LocalTime.of(10, 55, 0), "check", "empty");
+        Record record2 = new Record(2, LocalTime.of(10, 57, 0), "check", "empty");
+        Assert.assertFalse(record1.equals(record2) && record2.equals(record1));
+        Assert.assertNotEquals(record1.hashCode(), record2.hashCode());
     }
 }
