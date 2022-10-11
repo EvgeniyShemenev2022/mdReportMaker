@@ -3,6 +3,7 @@ package org.shemenev.v2;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -19,24 +20,12 @@ import java.util.stream.Stream;
  */
 
 public class Parser {
-
-    /**
-     * Выполняет парсинг файла
-     * * находит в нем таблицу
-     * * каждую строку таблицы превращает в {@link Record}
-     *
-     * @param pathToFile путь к файлу
-     * @return список строк
-     */
-
-    public static void main(String[] args) {
-
-
-        System.out.println(LocalTime.of(10, 5, 0));
-    }
-
     public List<Record> parse(Path pathToFile) {
         try {
+            if(Files.notExists(pathToFile)) {
+                throw new FileNotFoundException("Hello. There is no such file:" + pathToFile + " Buy!");
+            }
+
             return Files.lines(pathToFile)
                     .filter(line -> line.startsWith("|"))
                     .filter(line -> !line.contains("|:----|"))
