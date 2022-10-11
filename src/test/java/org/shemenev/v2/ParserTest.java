@@ -59,7 +59,7 @@ public class ParserTest {
         Parser parser = new Parser();
         URL url = Parser.class.getResource("shortDataSample.md");
         Path path = Paths.get(url.toURI());
-        List<Record> parsedRecords = parser.parse(path);
+        List<Record> parsedRecords = new Parser().parse(path);
 
         List<Record> expectedRecords = List.of(
                 new Record(1, LocalTime.of(10, 5, 0), "inbox", "начало"),
