@@ -18,13 +18,13 @@ public class Main {
             Hello. I am programm to calculate report statictic.
             This is my help menu:
                     1) run me as:
-            C:\\path> java showStatictic.jar -path "C:\\user\\documents\\path\\report\\01.05.2022.md"
+            C:\\path> java mdReportMaker.jar -path "C:\\user\\documents\\path\\report\\01.05.2022.md"
             to process report and see statictic
 
             Buy!""";
 
     private static String with_path_ArgsMessage = """
-            C:\\path> java showStatictic.jar -path "C:\\user\\documents\\path\\report\\01.05.2022.md"
+            C:\\path> java mdReportMaker.jar -path "C:\\user\\documents\\path\\report\\01.05.2022.md"
               Hello. I perform calculation of report for path: "C:\\user\\documents\\path\\report\\01.05.2022.md"\s
              \s
               Report:
