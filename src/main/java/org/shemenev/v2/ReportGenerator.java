@@ -17,7 +17,7 @@ public class ReportGenerator {
      * ключ(Название задачи) -> продолжительность задачи
      *
      * @param records рекорды
-     * @return мапа
+     * @return Map<String, Duration>
      */
 
     public Map<String, Duration> generate(List<Record> records) {
@@ -37,6 +37,12 @@ public class ReportGenerator {
         return tasksMap;
     }
 
+    /**
+     * этот метод считает полный раб.день и
+     * день без перерывав,
+     * результат помещает в отдельную карту
+     * @return Map<String, Duration>
+     */
     public Map<String, Duration> noBreaksGenerate(Map<String, Duration> tasksMap) {
 
         Duration withoutBreaks = Duration.ZERO;

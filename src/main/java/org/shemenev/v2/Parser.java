@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 /**
  * Нужен что бы представить файл в удобном виде(список {@link Record}) для дальнейшей работы
  */
@@ -33,6 +32,12 @@ public class Parser {
         }
     }
 
+    /**
+     * Этот метод разделяет строки на отдельные слова
+     * а так же удаляет лишние пробелы
+     * возвращает экземпляр класса Record с четырьмя параметрами
+     * @return Record()
+     */
     private Record recordMapper(String line) {
 
         List<String> columns = Arrays.stream(line.split("\\|"))
