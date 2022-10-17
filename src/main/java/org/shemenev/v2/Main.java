@@ -40,6 +40,12 @@ public class Main {
               Buy!
             """;
 
+    /**
+     * реализована возможность вызова программы с помощью несокльких флагов;
+     * так же устанавливается местоположение открытого .md файла
+     * @param args
+     * @throws URISyntaxException
+     */
     public static void main(String[] args) throws  URISyntaxException {
 
         String jarPath = Main.class
